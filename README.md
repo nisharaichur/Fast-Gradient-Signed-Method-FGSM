@@ -18,5 +18,6 @@ One of the first and most popular adversarial attacks to date is referred to as 
 ![](results_images/plot_0.003.png)
 ![](results_images/plot_0.012.png)
 ![](results_images/plot_0.019.png)
+<img src="results_images/accuracy_curve.png" width="450" height="300">
 
-< img src="results_images/accuracy_curve.png" width="100>
+

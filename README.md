@@ -24,7 +24,7 @@ One of the first and most popular adversarial attacks to date is referred to as 
 - image: The input image to which the noise is added
 - epsilon value
 - learning rate for the optimizer(we are optimizing the perturbations on the image)
-- pretrained model: pytorch already has the pretrained models, I have used them(Alexnet)
+- pretrained model: pytorch already has the pretrained models, I have used them(Resnet50)
 - required class whose accuracy we want to increase on an image
 
 # Results

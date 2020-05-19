@@ -9,13 +9,28 @@ One of the first and most popular adversarial attacks to date is referred to as 
 - json
 
 # Inputs
-- image: The input image to whihc the noise is added
+- image: The input image to which the noise is added
 - epsilons:  List of epsilon values to use for the run.  Also, intuitively we would expect the larger the epsilon, the more noticeable the perturbations but the more effective the attack in terms of degrading model accuracy. Since the data range here is [0,1], no epsilon value should exceed 1.
 - pretrained model: pytorch already has the pretrained models, I have used them(Alexnet)
 
 # Results
 ![](results_images/plot_0.0001.png)
 ![](results_images/plot_0.019.png)
-<img src="results_images/accuracy_curve.png" width="450" height="300">
 
+# Fast-Gradient-Signed-Method-FGSM (targeted attack)
+- This is a technique where we make the image classified as virtually any class we desire. This is know as "Targeted adversarial attack". The only difference is that instead of trying to just maximize the loss of the correct class, we maximize the loss of the correct class while also minimizing the loss of the target class.
+
+# Inputs
+- image: The input image to which the noise is added
+- epsilon value
+- learning rate for the optimizer(we are optimizing the perturbations on the image)
+- pretrained model: pytorch already has the pretrained models, I have used them(Alexnet)
+- required class whose accuracy we want to increase on an image
+
+# Results
+- We can see that the accuracy of the required class(coffee-mug) increases while the gaint-panda decreases
+![](results_images/plot_0.png)
+![](results_images/plot_10.png)
+![](results_images/plot_40.png)
+![](results_images/plot_90.png)
 

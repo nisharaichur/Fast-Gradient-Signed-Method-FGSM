@@ -10,8 +10,8 @@ import numpy as np
 import torch.optim as optim
 from utils import return_class_name, return_class_accuracy, visualize
 
-alexnet = models.resnet50(pretrained=True)
-alexnet.eval()
+resnet = models.resnet50(pretrained=True)
+resnet.eval()
 f = open("/content/imagenet_class_index.json")
 id_classname = json.load(f)
 
@@ -28,7 +28,7 @@ input_image = preprocess(image).unsqueeze(0)
 input_image = Variable(input_image)# we do not take the gradients wrt to this image, we take the gradients wrt the delta(perturbations on this image)
 original_image = norm(input_image.squeeze(0)).unsqueeze(0)
 
-predictions = alexnet(original_image)
+predictions = resnet(original_image)
 (target_class, target_dim) = return_class_name(predictions)
 target_acc = return_class_accuracy(predictions, target_dim)
 
@@ -43,7 +43,7 @@ epsilon = 0.0081 #can try out lesser values as well
 for i in range(100):
   data = input_image + delta
   data = norm(data.squeeze(0))
-  predictions = alexnet(data.unsqueeze(0))
+  predictions = resnet(data.unsqueeze(0))
   
   loss = torch.nn.CrossEntropyLoss() 
   loss_maximize = loss(predictions, actual_class) #we try to maximize this loss
